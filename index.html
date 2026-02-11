@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's Day</title>
+
+  <!-- CSS -->
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body + Background */
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("myphoto.jpg") no-repeat center center/cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Dark overlay for text visibility */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Glass card */
+    .card {
+      position: relative;
+      z-index: 1;
+      padding: 50px 70px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 40px rgba(255, 75, 92, 0.6);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Text styles */
+    h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px #ff4b5c;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* Typing effect */
+    .typing {
+      display: inline-block;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: #ff4b5c;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Card -->
+  <div class="card">
+    <h1 class="typing"></h1>
+    <h2>Win Shwe Moe</h2>
+    <p>February 14</p>
+    <p>May this special day be filled with love and unforgettable moments.</p>
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+  <div class="heart" style="left:25%; animation-delay:2s;">❤️</div>
+  <div class="heart" style="left:40%; animation-delay:4s;">❤️</div>
+  <div class="heart" style="left:60%; animation-delay:1s;">❤️</div>
+  <div class="heart" style="left:80%; animation-delay:3s;">❤️</div>
+
+  <!-- Music -->
+  <audio id="bgMusic" src="romantic.mp3" autoplay loop></audio>
+
+  <!-- JS -->
+  <script>
+    // Typing effect
+    const text = "❤️ Happy Valentine's Day ❤️";
+    const typingEl = document.querySelector(".typing");
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        typingEl.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 150);
+      }
+    }
+    type();
+
+    // Click hearts popup
+    document.querySelectorAll('.heart').forEach(h => {
+      h.addEventListener('click', () => {
+        alert("Sending love to Win Shwe Moe! 💌");
+      });
+    });
+  </script>
+
+</body>
+
+</html>
